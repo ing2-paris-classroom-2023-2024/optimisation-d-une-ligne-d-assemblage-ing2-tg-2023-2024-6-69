@@ -9,4 +9,7 @@ int main() {
 }
 
 void programme(){
+int r;
 }
+
+
