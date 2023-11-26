@@ -8,14 +8,6 @@
 
 int main() {
     printf("Hello, World!\n");
-    if (1) {
-        printf("Hello, World!\n");
-    } else {
-        printf("Hello, World!\n");
-    }
-    else {
-        printf("Hello, World!\n");
-    }
     return 0;
 
 }
