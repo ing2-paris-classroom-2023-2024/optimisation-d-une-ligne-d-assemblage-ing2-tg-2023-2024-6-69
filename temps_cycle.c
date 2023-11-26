@@ -18,6 +18,9 @@ void calcul(){
         }
         clock_t t2 = clock();
         printf("Temps = %ld\n", t2 - t1);
+        if (t2 - t1 > 0){
+            printf("Temps = %ld\n", t2 - t1);
+        }
     }
 }
 int temps_cycle(){
