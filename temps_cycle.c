@@ -28,6 +28,29 @@ void calcul(){
     printf("hello");
     printf("hello");
 }
+void calcul2(){
+    int i = 0;
+    int j = 0;
+    for (int k = 0; k < 10; ++k) {
+        printf("k = %d\n", k);
+        clock_t t1 = clock();
+        for (int l = 0; l < 1000000; ++l) {
+            i++;
+            j++;
+        }
+        clock_t t2 = clock();
+        printf("Temps = %ld\n", t2 - t1);
+        if (t2 - t1 > 0){
+            printf("Temps = %ld\n", t2 - t1);
+        }
+    }
+    if (i == j){
+        printf("i = j\n");
+    }
+    printf("hello");
+    printf("hello");
+}
+
 int temps_cycle(){
     int temps = 0;
     int i = 0;
