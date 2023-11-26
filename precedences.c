@@ -15,4 +15,9 @@ int main() {
     int *r = tab + 4;
     printf("%d\n", *p);
 
+    printf("%d\n", *q);
+    printf("%d\n", *r);
+    printf("%d\n", *p + 1);
+    printf("%d\n", *q + 1);
+
 }
