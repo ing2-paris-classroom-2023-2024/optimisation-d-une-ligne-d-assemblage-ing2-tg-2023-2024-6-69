@@ -13,6 +13,9 @@ int main() {
     } else {
         printf("Hello, World!\n");
     }
+    else {
+        printf("Hello, World!\n");
+    }
     return 0;
 
 }
