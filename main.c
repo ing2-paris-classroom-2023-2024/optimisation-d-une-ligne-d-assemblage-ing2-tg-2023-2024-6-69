@@ -11,6 +11,7 @@ int main() {
 void programme(){
 int r=0;
     int n;
+    
 }
 
 
