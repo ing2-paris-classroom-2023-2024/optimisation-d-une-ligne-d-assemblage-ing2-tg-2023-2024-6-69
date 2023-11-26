@@ -22,6 +22,7 @@ void calcul(){
             printf("Temps = %ld\n", t2 - t1);
         }
     }
+    printf("hello");
 }
 int temps_cycle(){
     int temps = 0;
