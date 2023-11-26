@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 int main() {
-    if (1) {
+    for (int i = 0; i < 10; i++) {
         printf("Hello, World!\n");
     }
 }
