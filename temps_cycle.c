@@ -23,6 +23,7 @@ void calcul(){
         }
     }
     printf("hello");
+    printf("hello");
 }
 int temps_cycle(){
     int temps = 0;
