@@ -21,8 +21,12 @@ void resultat(){
             printf("Temps = %ld\n", t2 - t1);
         }
     }
+
     if (i == j){
         printf("i = j\n");
+    }
+    else{
+        printf("i != j\n");
     }
     printf("hello");
     printf("hello");
