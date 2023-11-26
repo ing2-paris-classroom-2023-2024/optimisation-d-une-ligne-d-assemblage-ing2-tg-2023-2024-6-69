@@ -9,5 +9,8 @@ int temps_cycle(){
     int temps = 0;
     int i = 0;
     int j = 0;
-    int k = 0;
+    for (int k = 0; k < 10; ++k) {
+        printf("k = %d\n", k);
+        clock_t t1 = clock();
+    }
 }
