@@ -30,8 +30,10 @@ int temps_cycle(){
     }
     clock_t t2 = clock();
     printf("Temps = %ld\n", temps);
-    printf("Temps = %ld\n")
-    return temps;
+    printf("Temps = %ld\n");
+
+    printf("hello");
+    return 0;
 
 }
 
