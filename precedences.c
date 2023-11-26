@@ -7,9 +7,8 @@
 #include <stdlib.h>
 
 int main() {
-    printf("Hello, World!\n");
-    while (1) {
-        printf("Hello, World!\n");
-    }
-    return 0;
+    // Precedences
+    int a = 2, b = 3, c = 4;
+    int result = a + b * c;
+    printf("result = %d\n", result);
 }
