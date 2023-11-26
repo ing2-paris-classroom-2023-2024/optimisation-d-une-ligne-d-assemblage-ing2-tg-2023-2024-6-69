@@ -37,7 +37,38 @@ void resultat(){
         printf("i != j\n");
     }
 }
-
+int resultat2(){
+    int i = 0;
+    int j = 0;
+    for (int k = 0; k < 10; ++k) {
+        printf("k = %d\n", k);
+        clock_t t1 = clock();
+        for (int l = 0; l < 1000000; ++l) {
+            i++;
+            j++;
+        }
+        clock_t t2 = clock();
+        printf("Temps = %ld\n", t2 - t1);
+        if (t2 - t1 > 0){
+            printf("Temps = %ld\n", t2 - t1);
+        }
+    }
+    if (i == j){
+        printf("i = j\n");
+    }
+    else{
+        printf("i != j\n");
+    }
+    printf("hello");
+    printf("hello");
+    if (i == j){
+        printf("i = j\n");
+    }
+    else{
+        printf("i != j\n");
+    }
+    return 0;
+}
 void calcul(){
     int i = 0;
     int j = 0;
