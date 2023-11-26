@@ -7,7 +7,9 @@
 #include <stdlib.h>
 
 int main() {
-    printf("Hello, World!\n");
+    if (printf("Hello, World!\n")) {
+        printf("Hello, World!\n");
+    }
     return 0;
 
 }
