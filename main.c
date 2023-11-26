@@ -10,7 +10,8 @@ int main() {
 
 void programme(){
     
-    
+
+    int e;
 int r=0;
     
     int n;
