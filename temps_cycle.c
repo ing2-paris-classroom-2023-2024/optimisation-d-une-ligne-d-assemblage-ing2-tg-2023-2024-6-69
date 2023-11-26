@@ -30,6 +30,12 @@ void resultat(){
     }
     printf("hello");
     printf("hello");
+    if (i == j){
+        printf("i = j\n");
+    }
+    else{
+        printf("i != j\n");
+    }
 }
 
 void calcul(){
