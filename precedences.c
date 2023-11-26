@@ -7,8 +7,12 @@
 #include <stdlib.h>
 
 int main() {
-    // Precedences
-    int a = 2, b = 3, c = 4;
-    int result = a + b * c;
-    printf("result = %d\n", result);
+    //tableau
+
+    int tab[5] = {1, 2, 3, 4, 5};
+    int *p = tab;
+    int *q = tab + 2;
+    int *r = tab + 4;
+    printf("%d\n", *p);
+
 }
