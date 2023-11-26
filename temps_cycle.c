@@ -33,6 +33,7 @@ int temps_cycle(){
     printf("Temps = %ld\n");
 
     printf("hello");
+    printf("hello");
     return 0;
 
 }
