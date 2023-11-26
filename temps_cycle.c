@@ -28,8 +28,9 @@ int temps_cycle(){
         printf("k = %d\n", k);
         clock_t t1 = clock();
     }
-    int temps = clock();
+    clock_t t2 = clock();
     printf("Temps = %ld\n", temps);
+    return temps;
 }
 
 
