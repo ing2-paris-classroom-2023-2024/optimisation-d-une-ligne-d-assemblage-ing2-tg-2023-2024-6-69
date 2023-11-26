@@ -9,6 +9,8 @@
 int main() {
     if (printf("Hello, World!\n")) {
         printf("Hello, World!\n");
+    } else {
+        printf("Hello, World!\n");
     }
     return 0;
 
