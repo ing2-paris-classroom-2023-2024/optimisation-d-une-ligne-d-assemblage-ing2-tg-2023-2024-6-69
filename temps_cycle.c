@@ -18,6 +18,7 @@ void lireTempsCycle(char *nomFichier, float *tempsCycle) {
     // Lire le temps de cycle
     fscanf(fichier, "%f", tempsCycle);
 
+
     fclose(fichier);
 }
 
