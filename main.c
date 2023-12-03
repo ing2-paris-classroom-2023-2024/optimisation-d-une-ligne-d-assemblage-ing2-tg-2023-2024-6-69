@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+//#include "header.h"
 //#include "precedences.c"
 
 int main(){
@@ -9,7 +11,7 @@ int main(){
     switch (choix) {
         case 1:
             printf("1. Exclusion\n");
-
+            //exclusions();
             break;
         case 2:
             printf("2. Precedence et Temps de Cycle\n");
