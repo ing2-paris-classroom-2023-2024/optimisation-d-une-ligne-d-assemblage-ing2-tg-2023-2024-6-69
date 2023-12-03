@@ -1,0 +1,46 @@
+Index: CMakeLists.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>cmake_minimum_required(VERSION 3.26)\r\nproject(projet C)\r\n\r\nset(CMAKE_C_STANDARD 90)\r\n\r\nadd_executable(projet main.c\r\n        main.c\r\n        main.c\r\n        main.c)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	
++++ b/CMakeLists.txt	
+@@ -6,4 +6,7 @@
+ add_executable(projet main.c
+         main.c
+         main.c
++        main.c
++        main.c
++        main.c
+         main.c)
+Index: temps_cycle.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>10\r\n
+===================================================================
+diff --git a/temps_cycle.txt b/temps_cycle.txt
+--- a/temps_cycle.txt	
++++ b/temps_cycle.txt	
+@@ -1,1 +1,1 @@
+-10
++
+Index: temps_cycle.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#include <stdio.h>\r\n#include <stdlib.h>\r\n\r\n// Structure pour stocker les données d'une opération\r\ntypedef struct {\r\n    int numero;\r\n    float tempsExecution;\r\n} Operation;\r\n\r\n// Fonction pour lire le temps de cycle à partir d'un fichier\r\nvoid lireTempsCycle(char *nomFichier, float *tempsCycle) {\r\n    FILE *fichier = fopen(nomFichier, \"r\");\r\n    if (fichier == NULL) {\r\n        perror(\"Erreur lors de l'ouverture du fichier temps_cycle.txt\");\r\n        exit(EXIT_FAILURE);\r\n    }\r\n\r\n    // Lire le temps de cycle\r\n    fscanf(fichier, \"%f\", tempsCycle);\r\n\r\n\r\n    fclose(fichier);\r\n}\r\n\r\n// Fonction pour lire les opérations à partir d'un fichier\r\nvoid lireOperations(char *nomFichier, Operation *operations, int *nbOperations) {\r\n    FILE *fichier = fopen(nomFichier, \"r\");\r\n    if (fichier == NULL) {\r\n        perror(\"Erreur lors de l'ouverture du fichier operations.txt\");\r\n        exit(EXIT_FAILURE);\r\n    }\r\n\r\n    // Lire le nombre total d'opérations\r\n    fscanf(fichier, \"%d\", nbOperations);\r\n\r\n    // Lire les opérations\r\n    for (int i = 0; i < *nbOperations; i++) {\r\n        fscanf(fichier, \"%d %f\", &operations[i].numero, &operations[i].tempsExecution);\r\n    }\r\n\r\n    fclose(fichier);\r\n}\r\n\r\n// Fonction pour vérifier la contrainte de temps de cycle\r\nint verifierContrainteTempsCycle(float *tempsExecution, int *affectations, int nbStations, int nbOperations, float tempsCycle) {\r\n    for (int k = 1; k <= nbStations; k++) {\r\n        float tempsTotal = 0.0;\r\n        for (int j = 1; j <= nbOperations; j++) {\r\n            if (affectations[j] == k) {\r\n                tempsTotal += tempsExecution[j];\r\n            }\r\n        }\r\n        if (tempsTotal > tempsCycle) {\r\n            return 0; // La contrainte de temps de cycle est violée\r\n        }\r\n    }\r\n    return 1; // La contrainte de temps de cycle est respectée\r\n}\r\n\r\nint main() {\r\n    // Déclarer la variable pour stocker la durée du temps de cycle\r\n    float tempsCycle;\r\n\r\n    // Lire la durée du temps de cycle à partir du fichier\r\n    lireTempsCycle(\"temps_cycle.txt\", &tempsCycle);\r\n\r\n    // Déclarer une structure pour stocker les opérations\r\n    int nbOperations;\r\n    Operation operations[35];\r\n\r\n    // Lire les opérations à partir du fichier\r\n    lireOperations(\"operations.txt\", operations, &nbOperations);\r\n\r\n    // Exemple d'affectations à chaque station\r\n    int nbStations = 3; // À ajuster en fonction de votre modèle\r\n    int affectations[36] = {0, 1, 1, 2, 2, 3, 1, 3, 1, 2, 3, 1, 2, 2, 3, 3, 3, 1, 1, 1, 2, 2, 1, 3, 1, 2, 3, 2, 3, 3, 3, 1, 1, 2, 3, 3};\r\n\r\n    // Vérifier la contrainte de temps de cycle\r\n    if (verifierContrainteTempsCycle(operations, affectations, nbStations, nbOperations, tempsCycle)) {\r\n        printf(\"La contrainte de temps de cycle est respectee.\\n\");\r\n    } else {\r\n        printf(\"La contrainte de temps de cycle est violée.\\n\");\r\n    }\r\n\r\n    return 0;\r\n}\r\n
+===================================================================
+diff --git a/temps_cycle.c b/temps_cycle.c
+--- a/temps_cycle.c	
++++ b/temps_cycle.c	
+@@ -72,7 +72,7 @@
+     lireOperations("operations.txt", operations, &nbOperations);
+ 
+     // Exemple d'affectations à chaque station
+-    int nbStations = 3; // À ajuster en fonction de votre modèle
++    int nbStations = 3;
+     int affectations[36] = {0, 1, 1, 2, 2, 3, 1, 3, 1, 2, 3, 1, 2, 2, 3, 3, 3, 1, 1, 1, 2, 2, 1, 3, 1, 2, 3, 2, 3, 3, 3, 1, 1, 2, 3, 3};
+ 
+     // Vérifier la contrainte de temps de cycle
