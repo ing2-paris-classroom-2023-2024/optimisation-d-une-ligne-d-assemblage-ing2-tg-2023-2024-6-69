@@ -9,6 +9,7 @@ int main(){
     switch (choix) {
         case 1:
             printf("1. Exclusion\n");
+
             break;
         case 2:
             printf("2. Precedence et Temps de Cycle\n");
