@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//#include "header.h"
-#include "precedences.c"
+#include "header.h"
+
 
 int main(){
     int choix;
