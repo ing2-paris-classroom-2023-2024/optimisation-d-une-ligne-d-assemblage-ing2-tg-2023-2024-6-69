@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 //#include "header.h"
-//#include "precedences.c"
+#include "precedences.c"
 
 int main(){
     int choix;
