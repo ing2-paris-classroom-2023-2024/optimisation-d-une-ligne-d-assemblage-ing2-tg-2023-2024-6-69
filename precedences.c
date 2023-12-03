@@ -1,13 +1,6 @@
-//
-// Created by Kamil Benjelloun on 26/11/2023.
-//
-
-
 #include "precedences.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-
 
 Graphep* creerGraphe(int sommets) {
     Graphep* graphe = (Graphep*)malloc(sizeof(Graphep));
@@ -34,12 +27,13 @@ void ajouterArc(Graphep* graphe, int src, int dest) {
 void imprimerGraphep(Graphep* graphep) {
     for (int i = 0; i < graphep->sommets; ++i) {
         if (graphep->tableau[i] != NULL) {
-            printf("Sommet %d : ", i);
+            printf("Station %d : ", i);
             Noeud* courant = graphep->tableau[i];
             while (courant) {
                 printf("%d ", courant->sommet);
                 courant = courant->suivant;
             }
+
             printf("\n");
         }
     }
@@ -106,8 +100,57 @@ double recupererDureeOperation(int numeroOperation) {
     }
 
     fclose(fichier);
-    // Gérer le cas où le numéro de l'opération n'est pas trouvé.
+    // Gerer le cas où le numero de l'operation n'est pas trouve.
     return 0.0;
+}
+
+int trouverStationDisponible(Graphep* graphe, int operation, int tempsCycle) {
+    for (int station = 0; station < graphe->sommets; ++station) {
+        double capaciteStation = tempsCycle;
+        Noeud* courant = graphe->tableau[station];
+
+        while (courant) {
+            int sommet = courant->sommet;
+            double dureeOperation = recupererDureeOperation(sommet);
+            capaciteStation -= dureeOperation;
+
+            courant = courant->suivant;
+        }
+
+        if (capaciteStation >= recupererDureeOperation(operation)) {
+            return station;
+        }
+    }
+
+    return -1;
+}
+
+void retirerOperation(Graphep* graphe, int station, int operation) {
+    Noeud* courant = graphe->tableau[station];
+    Noeud* precedent = NULL;
+
+    while (courant) {
+        if (courant->sommet == operation) {
+            if (precedent) {
+                precedent->suivant = courant->suivant;
+            } else {
+                graphe->tableau[station] = courant->suivant;
+            }
+
+            free(courant);
+            return;
+        }
+
+        precedent = courant;
+        courant = courant->suivant;
+    }
+}
+
+void ajouterOperation(Graphep* graphe, int station, int operation) {
+    Noeud* nouveauNoeud = (Noeud*)malloc(sizeof(Noeud));
+    nouveauNoeud->sommet = operation;
+    nouveauNoeud->suivant = graphe->tableau[station];
+    graphe->tableau[station] = nouveauNoeud;
 }
 
 void verifierContrainteTempsCycle(Graphep* graphe, const char* fichierTempsCycle) {
@@ -134,15 +177,68 @@ void verifierContrainteTempsCycle(Graphep* graphe, const char* fichierTempsCycle
         }
 
         if (dureeTotale > tempsCycle) {
-            printf("La durée totale des opérations par la station %d dépasse le temps de cycle spécifié.\n", i);
-            // Ajoutez ici le code pour prendre des mesures en conséquence, par exemple, arrêter le programme.
+            courant = graphe->tableau[i]; // Réinitialiser courant à la tête de la liste
+
+            int sommet = courant->sommet; // Sommet à réaffecter
+            int station = i;
+
+            while (station < graphe->sommets) {
+                Noeud* courantStation = graphe->tableau[station];
+                double capaciteStation = tempsCycle;
+
+                while (courantStation) {
+                    int sommetActuel = courantStation->sommet;
+                    double dureeOperation = recupererDureeOperation(sommetActuel);
+                    capaciteStation -= dureeOperation;
+
+                    courantStation = courantStation->suivant;
+                }
+
+                if (capaciteStation >= recupererDureeOperation(sommet)) {
+                    retirerOperation(graphe, i, sommet);
+                    ajouterOperation(graphe, station, sommet);
+
+                    printf("L'operation %d a ete reaffectee a la station %d pour optimisation.\n", sommet, station);
+                    break; // Sortir de la boucle si la station est trouvée
+                }
+
+                ++station; // Passer à la station suivante
+            }
+
+            if (station == graphe->sommets) {
+                printf("Avertissement : Impossible de reaffecter l'operation %d a une autre station. Verifiez les contraintes.\n", sommet);
+            }
         }
     }
 }
 
+void afficherStationsMisesAJour(Graphep* graphe) {
+    printf("\nStations avec les opérations mises a jour :\n");
+    for (int i = 0; i < graphe->sommets; ++i) {
+        if (graphe->tableau[i] != NULL) {
+            printf("Station %d : ", i);
+            Noeud* courant = graphe->tableau[i];
+            while (courant) {
+                printf("%d ", courant->sommet);
+                courant = courant->suivant;
+            }
+
+            printf("\n");
+        }
+    }
+    printf("----------------\n");
+}
+
+// Modifiez votre fonction precedences
 void precedences() {
     Graphep* graphe = construireGrapheDepuisFichier("precedences.txt");
+    printf("Liste initiale des stations :\n");
     imprimerGraphep(graphe);
+
     verifierContrainteTempsCycle(graphe, "temps_cycle.txt");
+
+    // Affichez la liste mise à jour après la vérification
+    afficherStationsMisesAJour(graphe);
+
     libererGraphep(graphe);
 }
