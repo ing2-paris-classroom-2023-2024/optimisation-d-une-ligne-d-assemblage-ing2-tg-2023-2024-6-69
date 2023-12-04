@@ -8,11 +8,14 @@ int main() {
     Graphe* graphe = creerGraphe(MAX_OPERATIONS);
 
     // menu
+
     printf("Choisissez votre option :\n1: Exclusion \n2: Precedence et Temps de Cycle\n3: Les 3 en meme temps\n");
     int choix;
+
     scanf("%d", &choix);
 
     // choix contraintes
+
     switch (choix) {
         case 1:
             graphe->contrainteExclusion = 1;
@@ -36,6 +39,7 @@ int main() {
             printf("Option invalide.\n");
             return 1;
     }
+    //main();
 
     //lecture fichiers
     lireRelationsPrecedence(graphe, "precedences.txt");
@@ -48,6 +52,8 @@ int main() {
     //sommets visités
     bool visite[MAX_OPERATIONS] = {false};
     bfs(graphe);
-
+    do {
+        main();
+    }while (choix<1 || choix>3);
     return 0;
 }
