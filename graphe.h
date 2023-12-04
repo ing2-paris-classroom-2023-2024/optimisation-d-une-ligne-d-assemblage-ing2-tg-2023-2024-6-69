@@ -10,7 +10,7 @@
 #define MAX_OPERATIONS 36
 
 //graphe pour optimisation
-typedef struct {
+typedef struct Graphe {
     // contraintes
     bool contrainteTemps;
     bool contrainteExclusion;
