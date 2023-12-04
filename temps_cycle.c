@@ -10,7 +10,7 @@
 float lireDureeCycle(const char* nomFichier) {
     FILE* fichier = fopen(nomFichier, "r");
     if (fichier == NULL) {
-        perror("Erreur lors de l'ouverture du fichier du temps de cycle");
+        perror("Erreur ouverture fichier temps de cycle");
         exit(EXIT_FAILURE);
     }
     float dureeCycle;
@@ -99,7 +99,7 @@ void lireTempsOperations(Graphe* graphe, const char* nomFichier) {
     FILE* fichier = fopen(nomFichier, "r");
 
     if (fichier == NULL) {
-        perror("Erreur lors de l'ouverture du fichier des temps d'operation");
+        perror("Erreur ouverture fichier operation");
         exit(EXIT_FAILURE);
     }
 

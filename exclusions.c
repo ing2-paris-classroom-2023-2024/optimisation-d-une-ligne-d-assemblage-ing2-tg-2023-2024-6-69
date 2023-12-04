@@ -6,7 +6,7 @@
 void lirePairesExclusion(Graphe* graphe, const char* nomFichier) {
     FILE* fichier = fopen(nomFichier, "r");
     if (fichier == NULL) {
-        perror("Erreur lors de l'ouverture du fichier des paires d'exclusion");
+        perror("Erreur ouverture fichier exclusion");
         exit(EXIT_FAILURE);
     }
     int op1, op2;

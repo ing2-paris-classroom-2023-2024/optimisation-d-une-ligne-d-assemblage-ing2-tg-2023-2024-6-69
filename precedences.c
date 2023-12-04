@@ -6,7 +6,7 @@
 void lireRelationsPrecedence(Graphe* graphe, const char* nomFichier) {
     FILE* fichier = fopen(nomFichier, "r");
     if (fichier == NULL) {
-        perror("Erreur lors de l'ouverture du fichier des relations de précédence");
+        perror("Erreur ouverture fichier précédence");
         exit(EXIT_FAILURE);
     }
     int source, destination;
