@@ -20,12 +20,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4381a40-0dd1-45bc-afda-5e8b47aea0ab" name="Changes" comment="ajustement">
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projet.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projet.dir/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projet.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projet.dir/objects.a" afterDir="false" />
+    <list default="true" id="d4381a40-0dd1-45bc-afda-5e8b47aea0ab" name="Changes" comment="ajustement final">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/projet.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/projet.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +106,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701012356656</updated>
       <workItem from="1701012357917" duration="2338000" />
-      <workItem from="1701692845705" duration="4225000" />
+      <workItem from="1701692845705" duration="6460000" />
     </task>
     <task id="LOCAL-00001" summary="premier temps cycle">
       <option name="closed" value="true" />
@@ -286,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701696924321</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="ajustement final">
+      <option name="closed" value="true" />
+      <created>1701697362730</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1701697362730</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,6 +319,7 @@
     <MESSAGE value="." />
     <MESSAGE value="menu maj" />
     <MESSAGE value="ajustement" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajustement" />
+    <MESSAGE value="ajustement final" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajustement final" />
   </component>
 </project>
