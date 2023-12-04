@@ -3,4 +3,7 @@ project(projet C)
 
 set(CMAKE_C_STANDARD 90)
 
-add_executable(projet main.c)
+add_executable(projet main.c
+        main.c
+        main.c
+        main.c)
