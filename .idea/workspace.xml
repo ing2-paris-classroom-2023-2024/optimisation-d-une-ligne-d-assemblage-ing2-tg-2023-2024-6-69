@@ -16,12 +16,7 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4381a40-0dd1-45bc-afda-5e8b47aea0ab" name="Changes" comment=".">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_12_2023_19_45__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_12_2023_19_45__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_12_2023_19_45__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_12_2023_19_45__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_12_2023_19_47__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_12_2023_19_47__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d4381a40-0dd1-45bc-afda-5e8b47aea0ab" name="Changes" comment="menu" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +33,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "customColor": "",
@@ -85,7 +83,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701012356656</updated>
       <workItem from="1701012357917" duration="2338000" />
-      <workItem from="1701692845705" duration="3000" />
+      <workItem from="1701692845705" duration="371000" />
     </task>
     <task id="LOCAL-00001" summary="premier temps cycle">
       <option name="closed" value="true" />
@@ -175,7 +173,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701692646013</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="menu">
+      <option name="closed" value="true" />
+      <created>1701693019937</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1701693019937</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,6 +204,7 @@
     <MESSAGE value="precedences" />
     <MESSAGE value="menu nouveau" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="menu" />
   </component>
 </project>
