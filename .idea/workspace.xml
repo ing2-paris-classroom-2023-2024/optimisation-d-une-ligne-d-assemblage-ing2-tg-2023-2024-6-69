@@ -83,7 +83,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701012356656</updated>
       <workItem from="1701012357917" duration="2338000" />
-      <workItem from="1701692845705" duration="371000" />
+      <workItem from="1701692845705" duration="750000" />
     </task>
     <task id="LOCAL-00001" summary="premier temps cycle">
       <option name="closed" value="true" />
@@ -181,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701693019937</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="menu">
+      <option name="closed" value="true" />
+      <created>1701693364899</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1701693364899</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

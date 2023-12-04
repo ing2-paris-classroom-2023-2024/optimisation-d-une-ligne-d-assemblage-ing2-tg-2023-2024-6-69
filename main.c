@@ -8,7 +8,7 @@ int main() {
     Graphe* graphe = creerGraphe(MAX_OPERATIONS);
 
     // menu
-    printf("Choisissez les contraintes à appliquer :\n1: Exclusion seulement\n2: Temps de cycle et précédence\n3: Toutes les contraintes\n");
+    printf("Choisissez votre option :\n1: Exclusion \n2: Precedence et Temps de Cycle\n3: Les 3 en meme temps\n");
     int choix;
     scanf("%d", &choix);
 
