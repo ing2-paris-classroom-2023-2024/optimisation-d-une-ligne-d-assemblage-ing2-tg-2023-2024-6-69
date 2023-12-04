@@ -90,7 +90,7 @@ void bfs(Graphe* graphe) {
         for (int j = 0; j < nombreOperationsParStation[i]; j++) {
             printf("%d; ", operationsParStation[i][j]);
         }
-        printf("avec un temps total de %.2f secondes\n", tempsParStation[i]);
+        printf("en %.2f seconde(s)\n", tempsParStation[i]);
     }
 }
 
@@ -99,7 +99,7 @@ void lireTempsOperations(Graphe* graphe, const char* nomFichier) {
     FILE* fichier = fopen(nomFichier, "r");
 
     if (fichier == NULL) {
-        perror("Erreur lors de l'ouverture du fichier des temps d'opération");
+        perror("Erreur lors de l'ouverture du fichier des temps d'operation");
         exit(EXIT_FAILURE);
     }
 
