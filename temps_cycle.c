@@ -1,86 +1,117 @@
+#include "temps_cycle.h"
+#include "graphe.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-// Structure pour stocker les données d'une opération
-typedef struct {
-    int numero;
-    float tempsExecution;
-} Operation;
+#define MAX_STATIONS 100
 
-// Fonction pour lire le temps de cycle à partir d'un fichier
-void lireTempsCycle(char *nomFichier, float *tempsCycle) {
-    FILE *fichier = fopen(nomFichier, "r");
+//lire durée totale cycle
+float lireDureeCycle(const char* nomFichier) {
+    FILE* fichier = fopen(nomFichier, "r");
     if (fichier == NULL) {
-        perror("Erreur lors de l'ouverture du fichier temps_cycle.txt");
+        perror("Erreur lors de l'ouverture du fichier du temps de cycle");
         exit(EXIT_FAILURE);
     }
-
-    // Lire le temps de cycle
-    fscanf(fichier, "%f", tempsCycle);
-
-
+    float dureeCycle;
+    fscanf(fichier, "%f", &dureeCycle);
     fclose(fichier);
+    return dureeCycle;
 }
 
-// Fonction pour lire les opérations à partir d'un fichier
-void lireOperations(char *nomFichier, Operation *operations, int *nbOperations) {
-    FILE *fichier = fopen(nomFichier, "r");
-    if (fichier == NULL) {
-        perror("Erreur lors de l'ouverture du fichier operations.txt");
-        exit(EXIT_FAILURE);
+// vérifier la contrainte d'exclusion
+bool estExclu(Graphe* graphe, int sommetCourant, int *operationsStation, int nombreOperations) {
+    for (int i = 0; i < nombreOperations; i++) {
+        if (graphe->matriceExclusion[sommetCourant][operationsStation[i]]) {
+            return true;
+        }
     }
-
-    // Lire le nombre total d'opérations
-    fscanf(fichier, "%d", nbOperations);
-
-    // Lire les opérations
-    for (int i = 0; i < *nbOperations; i++) {
-        fscanf(fichier, "%d %f", &operations[i].numero, &operations[i].tempsExecution);
-    }
-
-    fclose(fichier);
+    return false;
 }
 
-// Fonction pour vérifier la contrainte de temps de cycle
-int verifierContrainteTempsCycle(float *tempsExecution, int *affectations, int nbStations, int nbOperations, float tempsCycle) {
-    for (int k = 1; k <= nbStations; k++) {
-        float tempsTotal = 0.0;
-        for (int j = 1; j <= nbOperations; j++) {
-            if (affectations[j] == k) {
-                tempsTotal += tempsExecution[j];
+//bfs sur le graphe
+void bfs(Graphe* graphe) {
+    int file[MAX_OPERATIONS], front = 0, arriere = -1;
+    int stationCourante = 1;
+    int operationsParStation[MAX_STATIONS][MAX_OPERATIONS] = {0};
+    int nombreOperationsParStation[MAX_STATIONS] = {0};
+    float tempsParStation[MAX_STATIONS] = {0.0};
+    bool visite[MAX_OPERATIONS] = {false};
+
+    // init file d'attente
+    for (int i = 1; i < graphe->V; i++) {
+        if (graphe->existe[i] && (!graphe->appliquerContraintePrecedence || graphe->degreEntrant[i] == 0)) {
+            file[++arriere] = i;
+            visite[i] = true;
+        }
+    }
+
+    while (front <= arriere) {
+        int sommetCourant = file[front++];
+        bool ajoutStation = false;
+
+        // parcours stations existantes
+        for (int i = 1; i <= stationCourante && !ajoutStation; i++) {
+            bool peutEtreAjoute = true;
+
+            // verif contraintes
+            if ((graphe->appliquerContrainteTemps && (tempsParStation[i] + graphe->tempsOperation[sommetCourant] > graphe->tempsCycle)) ||
+                (graphe->appliquerContrainteExclusion && estExclu(graphe, sommetCourant, operationsParStation[i], nombreOperationsParStation[i]))) {
+                peutEtreAjoute = false;
+            }
+
+            if (peutEtreAjoute) {
+                operationsParStation[i][nombreOperationsParStation[i]++] = sommetCourant;
+                tempsParStation[i] += graphe->tempsOperation[sommetCourant];
+                ajoutStation = true;
             }
         }
-        if (tempsTotal > tempsCycle) {
-            return 0; // La contrainte de temps de cycle est violée
+
+        // i l'opération pas ajoutée, nouvelle station
+        if (!ajoutStation) {
+            stationCourante++;
+            operationsParStation[stationCourante][0] = sommetCourant;
+            nombreOperationsParStation[stationCourante] = 1;
+            tempsParStation[stationCourante] = graphe->tempsOperation[sommetCourant];
+        }
+
+        // Ajouter opérations à la file d'attente
+        for (int i = 1; i < graphe->V; i++) {
+            if (graphe->matriceAdjacence[sommetCourant][i] && !visite[i] && graphe->existe[i]) {
+                file[++arriere] = i;
+                visite[i] = true;
+            }
         }
     }
-    return 1; // La contrainte de temps de cycle est respectée
+
+    // Affichage stations avec opérations
+    for (int i = 1; i <= stationCourante; i++) {
+        printf("Station %d : ", i);
+        for (int j = 0; j < nombreOperationsParStation[i]; j++) {
+            printf("%d; ", operationsParStation[i][j]);
+        }
+        printf("avec un temps total de %.2f secondes\n", tempsParStation[i]);
+    }
 }
 
-int main() {
-    // Déclarer la variable pour stocker la durée du temps de cycle
-    float tempsCycle;
+//lire temps exécution opérations
+void lireTempsOperations(Graphe* graphe, const char* nomFichier) {
+    FILE* fichier = fopen(nomFichier, "r");
 
-    // Lire la durée du temps de cycle à partir du fichier
-    lireTempsCycle("temps_cycle.txt", &tempsCycle);
-
-    // Déclarer une structure pour stocker les opérations
-    int nbOperations;
-    Operation operations[35];
-
-    // Lire les opérations à partir du fichier
-    lireOperations("operations.txt", operations, &nbOperations);
-
-    // Exemple d'affectations à chaque station
-    int nbStations = 3; // À ajuster en fonction de votre modèle
-    int affectations[36] = {0, 1, 1, 2, 2, 3, 1, 3, 1, 2, 3, 1, 2, 2, 3, 3, 3, 1, 1, 1, 2, 2, 1, 3, 1, 2, 3, 2, 3, 3, 3, 1, 1, 2, 3, 3};
-
-    // Vérifier la contrainte de temps de cycle
-    if (verifierContrainteTempsCycle(operations, affectations, nbStations, nbOperations, tempsCycle)) {
-        printf("La contrainte de temps de cycle est respectee.\n");
-    } else {
-        printf("La contrainte de temps de cycle est violée.\n");
+    if (fichier == NULL) {
+        perror("Erreur lors de l'ouverture du fichier des temps d'opération");
+        exit(EXIT_FAILURE);
     }
 
-    return 0;
+    int operation;
+    float temps;
+
+    // paires opération-temps depuis fichier et les intègre dans le graphe
+    while (fscanf(fichier, "%d %f", &operation, &temps) == 2) {
+        // Vérifie si l'opération est dans la plage valide
+        if (operation >= 1 && operation < MAX_OPERATIONS) {
+            graphe->tempsOperation[operation] = temps;
+        }
+    }
+    fclose(fichier);
 }
