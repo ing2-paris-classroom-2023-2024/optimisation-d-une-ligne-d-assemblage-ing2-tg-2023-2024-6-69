@@ -16,8 +16,11 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4381a40-0dd1-45bc-afda-5e8b47aea0ab" name="Changes" comment=".">
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+    <list default="true" id="d4381a40-0dd1-45bc-afda-5e8b47aea0ab" name="Changes" comment="menu maj">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exclusion.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/operations.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/temps_cycle.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +88,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701012356656</updated>
       <workItem from="1701012357917" duration="2338000" />
-      <workItem from="1701692845705" duration="2039000" />
+      <workItem from="1701692845705" duration="2666000" />
     </task>
     <task id="LOCAL-00001" summary="premier temps cycle">
       <option name="closed" value="true" />
@@ -223,7 +226,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701694617543</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="menu maj">
+      <option name="closed" value="true" />
+      <created>1701695014896</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1701695014896</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +259,7 @@
     <MESSAGE value="menu" />
     <MESSAGE value="correction" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="menu maj" />
+    <option name="LAST_COMMIT_MESSAGE" value="menu maj" />
   </component>
 </project>
