@@ -40,7 +40,7 @@ void bfs(Graphe* graphe) {
 
     // init file d'attente
     for (int i = 1; i < graphe->V; i++) {
-        if (graphe->existe[i] && (!graphe->appliquerContraintePrecedence || graphe->degreEntrant[i] == 0)) {
+        if (graphe->existe[i] && (!graphe->contraintePrecedence || graphe->degreEntrant[i] == 0)) {
             file[++arriere] = i;
             visite[i] = true;
         }
@@ -55,8 +55,8 @@ void bfs(Graphe* graphe) {
             bool peutEtreAjoute = true;
 
             // verif contraintes
-            if ((graphe->appliquerContrainteTemps && (tempsParStation[i] + graphe->tempsOperation[sommetCourant] > graphe->tempsCycle)) ||
-                (graphe->appliquerContrainteExclusion && estExclu(graphe, sommetCourant, operationsParStation[i], nombreOperationsParStation[i]))) {
+            if ((graphe->contrainteTemps && (tempsParStation[i] + graphe->tempsOperation[sommetCourant] > graphe->tempsCycle)) ||
+                (graphe->contrainteExclusion && estExclu(graphe, sommetCourant, operationsParStation[i], nombreOperationsParStation[i]))) {
                 peutEtreAjoute = false;
             }
 
@@ -76,21 +76,21 @@ void bfs(Graphe* graphe) {
         }
 
         // Ajouter opérations à la file d'attente
-        for (int i = 1; i < graphe->V; i++) {
-            if (graphe->matriceAdjacence[sommetCourant][i] && !visite[i] && graphe->existe[i]) {
-                file[++arriere] = i;
-                visite[i] = true;
+        for (int l = 1; l < graphe->V; l++) {
+            if (graphe->matriceAdjacence[sommetCourant][l] && !visite[l] && graphe->existe[l]) {
+                file[++arriere] = l;
+                visite[l] = true;
             }
         }
     }
 
     // Affichage stations avec opérations
-    for (int i = 1; i <= stationCourante; i++) {
-        printf("Station %d : ", i);
-        for (int j = 0; j < nombreOperationsParStation[i]; j++) {
-            printf("%d; ", operationsParStation[i][j]);
+    for (int k = 1; k <= stationCourante; k++) {
+        printf("Station %d : ", k);
+        for (int j = 0; j < nombreOperationsParStation[k]; j++) {
+            printf("%d; ", operationsParStation[k][j]);
         }
-        printf("en %.2f seconde(s)\n", tempsParStation[i]);
+        printf("en %.2f seconde(s)\n", tempsParStation[k]);
     }
 }
 
